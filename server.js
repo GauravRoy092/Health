@@ -3,12 +3,15 @@ const colors = require("colors");
 const moragan = require("morgan");
 
 const dotenv = require("dotenv");
+const connectDB = require("./config/db");
 
 //rest obejct
 const app = express();
 
 //dotenv config
 dotenv.config();
+
+connectDB();
 
 //middlewares
 app.use(express.json());
