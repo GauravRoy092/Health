@@ -1,10 +1,14 @@
 import React, { useEffect } from "react";
 import axios from "axios";
+import { Layout } from "antd";
+
+import CustomLayout from "./../components/Layout"; // assuming Layout.js is renamed to CustomLayout.js
+
 const HomePage = () => {
   // login user data
   const getUserData = async () => {
     try {
-      const res = await axios.post(
+      await axios.post(
         "/api/v1/user/getUserData",
         {},
         {
@@ -21,10 +25,13 @@ const HomePage = () => {
   useEffect(() => {
     getUserData();
   }, []);
+
   return (
-    <div>
-      <h1>Home Page</h1>
-    </div>
+    <CustomLayout> {/* Use the imported CustomLayout component here */}
+      <Layout>
+        <h1>Home Page</h1>
+      </Layout>
+    </CustomLayout>
   );
 };
 
